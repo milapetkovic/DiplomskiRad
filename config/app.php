@@ -181,7 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        \App\Providers\ElasticsearchServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -194,6 +194,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Geocoder\Laravel\Providers\GeocoderService::class,
+        Spatie\Geocoder\GeocoderServiceProvider::class
 
     ],
 
@@ -210,6 +212,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Geocoder' => Spatie\Geocoder\Facades\Geocoder::class,
+        'Elasticsearch' => \App\Facades\Elasticsearch::class
+
     ])->toArray(),
 
 ];
