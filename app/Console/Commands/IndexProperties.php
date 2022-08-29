@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Facades\Elasticsearch;
+use App\Facades\Search;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Spatie\Geocoder\Geocoder;
 
 class IndexProperties extends Command
@@ -36,8 +38,7 @@ class IndexProperties extends Command
         $counter = 0;
         $properties = json_decode(file_get_contents(storage_path() . "/properties.json"), true);
         foreach ($properties as $property) {
-            $request['index'] = 'properties';
-            $request['body'] = [
+            $body = [
                 'id' => $property['image_id'],
                 'address' => $property['street'] . ' ' . $property['citi'],
                 'city' => $property['citi'],
@@ -52,10 +53,21 @@ class IndexProperties extends Command
                 'image' => 'https://ik.imagekit.io/yxftwkca9e/'  . $property['image_id'] . '.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1661373876924',
                 'description' => $property['description']
             ];
-            Elasticsearch::index($request);
+            $request['body'][] = [
+                'index' => [
+                    '_index' => 'properties',
+                    '_id' => intval( '00000' . $property['image_id'])
+                ]
+            ];
+            $request['body'][] = $body;
+
+            if ($counter != 0 && $counter % 500 == 0) {
+                $response = Elasticsearch::bulk($request);
+                $request = ['body' => []];
+                unset($response);
+                $this->info('Indexed ' . $counter . ' properties...');
+            }
             $counter++;
-            if(($counter % 10) == 0)
-            $this->info('Indexed ' . $counter . ' properties...');
         }
         return 0;
     }
