@@ -27,6 +27,8 @@ class Elasticsearch
     }
 
     /**
+     * Index documents
+     *
      * @param $parameters
      * @return void
      */
@@ -40,6 +42,8 @@ class Elasticsearch
     }
 
     /**
+     * Search documents
+     *
      * @param $parameters
      * @return \Elastic\Elasticsearch\Response\Elasticsearch|Promise|array
      */
@@ -50,5 +54,30 @@ class Elasticsearch
         } catch (ClientResponseException|ServerResponseException $e) {
         }
         return [];
+    }
+
+    /**
+     * Check if index exists
+     *
+     * @param $parameters
+     * @return bool
+     */
+    public function exists($parameters)
+    {
+        return $this->client
+            ->indices()
+            ->exists($parameters);
+    }
+
+    /**
+     * Index multiple documents
+     *
+     * @param $parameters
+     * @return array
+     */
+    public function bulk($parameters)
+    {
+        return $this->client
+            ->bulk($parameters);
     }
 }

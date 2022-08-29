@@ -3,8 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Facades\Elasticsearch;
+use App\Facades\Search;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Spatie\Geocoder\Geocoder;
 
 class IndexProperties extends Command
@@ -43,9 +45,7 @@ class IndexProperties extends Command
             if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
                 $image = '/storage/icons/house.svg';
             }
-
-            $request['index'] = 'properties';
-            $request['body'] = [
+            $body = [
                 'id' => $property['image_id'],
                 'address' => $property['street'],
                 'city' => $property['citi'],
@@ -57,12 +57,24 @@ class IndexProperties extends Command
                 'bath' => $property['bath'],
                 'price' => $property['price'],
                 'sqrft' => $property['sqft'],
-                'image' => $image
+                'image' => $image,
+                'description' => $property['description']
             ];
-            Elasticsearch::index($request);
+            $request['body'][] = [
+                'index' => [
+                    '_index' => 'properties',
+                    '_id' => intval( '00000' . $property['image_id'])
+                ]
+            ];
+            $request['body'][] = $body;
+
+            if ($counter != 0 && $counter % 500 == 0) {
+                $response = Elasticsearch::bulk($request);
+                $request = ['body' => []];
+                unset($response);
+                $this->info('Indexed ' . $counter . ' properties...');
+            }
             $counter++;
-            if(($counter % 10) == 0)
-            $this->info('Indexed ' . $counter . ' properties...');
         }
         $this->info('Number of properties: ' . count(array_unique(array_column($properties, 'street'))));
         return 0;
