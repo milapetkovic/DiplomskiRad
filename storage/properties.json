@@ -7,7 +7,9 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1560,
-    "price": 201900
+    "price": 201900,
+    "description" : "Spectacular 3 Bedroom 2 Bath 1560sqft home with a swimming pool. This house has so many upgrades that I cannot list them all. The house has ceiling fans in every room, Alside Window Platinum 2 insulated window and slider doors throughout the home, Daltile Emerson Wood Porcelain floor throughout the house, tiled fireplace in the living room, solid granite counter tops, Provia 6 Paneled Embossed Mountain Berry Double Steel door will Full Jamb front doors with Provia Duraguard Security Screen Full View Double Door, tiled 2 person shower in the guest bathroom and a separate tile shower & bath in the master, large walk-in closet in the master bedroom, Whirlpool Black Stainless microwave and stove, also a Maytag Stainless Steel JetClean Plus Front Control Dishwasher. Then you have an 18 foot round above ground salt water pool 4 feet deep with a wood deck and glass wall. This pool has a Deep Cleaning Robotic Pool Cleaner system on it. The house has a covered patio in the back and Red River Rock landscaping in the front and back yard. You also have 2 sheds, 3 storage cabinets and 3 storage boxes in the back yard and an RV ACCESS GATE. MUST SEE!!!!",
+    "place_id" : 1
   },
   {
     "image_id": 1,
@@ -17,7 +19,9 @@
     "bed": 3,
     "bath": 2,
     "sqft": 713,
-    "price": 228500
+    "price": 228500,
+    "description" : "This single-family home is located at 124 W C St, Brawley, CA. 124 W C St is in Brawley, CA and in ZIP code 92227. This property has 3 bedrooms, 2 bathrooms and approximately 713 sqft of floor space. This property has a lot size of 7,409 sqft and was built in 1950.",
+    "place_id" : 2
   },
   {
     "image_id": 2,
@@ -27,7 +31,9 @@
     "bed": 3,
     "bath": 1,
     "sqft": 800,
-    "price": 273950
+    "price": 273950,
+    "description" : "This 800 square foot single family home has 3 bedrooms and 1.0 bathrooms. This home is located at 2304 Clark Rd, Imperial, CA 92251."
+    "place_id" : 3
   },
   {
     "image_id": 3,
@@ -37,7 +43,9 @@
     "bed": 3,
     "bath": 1,
     "sqft": 1082,
-    "price": 350000
+    "price": 350000,
+    "description" : "Home is currently generating $800 in rental income . Huge front yard and the ability to live and operate a business on the same property . Cash and/or Conventional Financing , preferred",
+    "place_id" : 2
   },
   {
     "image_id": 4,
@@ -47,7 +55,9 @@
     "bed": 4,
     "bath": 3,
     "sqft": 2547,
-    "price": 385100
+    "price": 385100,
+    "description" : "this amazing house, highly upgraded 4 bedroom, 3 bath, 2547 home sq ft, 3 car garage space located in the Cul-de-sac street, featured 24X24 porcelain tile, custom pain, remodeled kitchen with upgraded cabinets, stainless steel appliances, and Galaxy marble counter tops. Amazing backyard, 2 cover patios, with ceiling fans, limestone pillars and epoxy floors, upgraded clock fence, artificial grass and a large BBQ, front and rear landscape, complete wire for out side TV entertainment, good for family reunions, friends, really private, and some much to offer, sewer connected, windows, etc."
+    "place_id" : 4
   },
   {
     "image_id": 5,
@@ -57,7 +67,9 @@
     "bed": 3,
     "bath": 1,
     "sqft": 1082,
-    "price": 350000
+    "price": 350000,
+    "description" : "Home is currently generating $800 in rental income . Huge front yard and the ability to live and operate a business on the same property . Cash and/or Conventional Financing , preferred",
+    "place_id" : 2
   },
   {
     "image_id": 6,
@@ -67,7 +79,9 @@
     "bed": 4,
     "bath": 3,
     "sqft": 2769,
-    "price": 415000
+    "price": 415000,
+    "description" : "Beautiful house close to High School, Jr. High School, Gas Station and Super Market. Great opportunity!",
+    "place_id" : 4
   },
   {
     "image_id": 7,
@@ -77,7 +91,9 @@
     "bed": 5,
     "bath": 2.1,
     "sqft": 2600,
-    "price": 545000
+    "price": 545000,
+    "description" : "Looking for the ultimate custom home in one of Brawley's highly desirable neighborhoods, look no further! Some of the many custom upgrades include an open floor plan perfect for entertaining, a formal dining area featuring a built-in buffet and DUAL wine coolers, fully remodeled gourmet chef's kitchen, professional grade SS appliances, new cabinets, granite countertops, shutters, travertine stone flooring, crown molding, special accent and recessed lighting throughout. ALL baths have been remodeled from top to bottom with custom stone tile work - the list goes on in this well maintained custom home. Outdoors you'll find an entertainer's backyard featuring two custom covered patio's, a built-in BBQ island with two grills (Memphis Pro Wood Pellet & Brama Gas Grill) stone pavers throughout, a fire-pit and a putting green. Don't miss a rare opportunity on this wonderful home now available for you to call home.",
+    "place_id" : 2
   },
   {
     "image_id": 8,
@@ -87,7 +103,9 @@
     "bed": 5,
     "bath": 2.1,
     "sqft": 2600,
-    "price": 545000
+    "price": 545000,
+    "description" : "Looking for the ultimate custom home in one of Brawley's highly desirable neighborhoods, look no further! Some of the many custom upgrades include an open floor plan perfect for entertaining, a formal dining area featuring a built-in buffet and DUAL wine coolers, fully remodeled gourmet chef's kitchen, professional grade SS appliances, new cabinets, granite countertops, shutters, travertine stone flooring, crown molding, special accent and recessed lighting throughout. ALL baths have been remodeled from top to bottom with custom stone tile work - the list goes on in this well maintained custom home. Outdoors you'll find an entertainer's backyard featuring two custom covered patio's, a built-in BBQ island with two grills (Memphis Pro Wood Pellet & Brama Gas Grill) stone pavers throughout, a fire-pit and a putting green. Don't miss a rare opportunity on this wonderful home now available for you to call home.",
+    "place_id" : 2
   },
   {
     "image_id": 9,
@@ -97,7 +115,9 @@
     "bed": 4,
     "bath": 5.1,
     "sqft": 3932,
-    "price": 690000
+    "price": 690000,
+    "description" : "Fantastic house on the hill with great views of the lake and mountains. This is one of the biggest and nicest house in Salton City. This house is huge at 3932 sqft with 4 bedrooms, 5 1/2 baths, an office, 4 car attached garage and a large detached RV garage with bathroom. This house has high ceilings, ceiling fans everywhere, travertine flooring (even in the garage) professional chef style kitchen with built in pot filler. Built in bar with ice maker and refrigerator, 2 fireplace, 1 living room and one master bedroom, Built in surround sound speaker system throughout the house, Large walk-in pantry, Large kitchen island with built in sink, Lots and lots of cabinets space all throughout the house. the master bedroom has large walk-in close it with her and his sides, Jacuzzi tub and double tile shower, most bathrooms have double tile showers in them. This is the ultimate dream or party house. Also has swimming pool with water slide, water fall and Jacuzzi. Look at pictures. Dre",
+    "place_id" : 1
   },
   {
     "image_id": 10,
@@ -107,7 +127,9 @@
     "bed": 3,
     "bath": 2.1,
     "sqft": 4044,
-    "price": 1350000
+    "price": 1350000,
+    "description" : "Discover your new lifestyle in this beautiful, peaceful ranch home with panoramic views! Breathe in the fresh air and enjoy privacy on this completely fenced in 70 Acre Estate! The main house is a custom home featuring a one-story open floor plan, living area, family room, dining area, sun room, bar, and chef's kitchen. Oversized kitchen boasts an island, breakfast bar, walk in pantry, and hardwood floors. The sun room and bar are just off the kitchen area. Light and bright sun room features Spanish tile flooring and built in BBQ rotisserie grill. Enjoy warmth and conversation around large stone fireplaces in both the living and family areas. The main bedroom suite features a fireplace, beautiful views, and en-suite bathroom with dual sinks and jetted tub. This home also has solar panels and a lovely Spanish tile roof. Exterior features include a concrete patio and driveway, rock water garden, fish pond, 3 car garage, horse corral, tack room, and RV trailer. The second home on the property has 2,200 square feet of living space, 4 bedrooms, 2 full bathrooms. The main bedroom has a walk in closet and jetted jacuzzi tub in the en-suite bath. This manufactured home boasts a living room, family room, open kitchen, fireplace and plenty of storage. Views abound from both homes! Enjoy seasonal poppies and wildflowers, occasional snow topped hills, and an abundance of blue skies! Commuter friendly to LA, and Santa Clarita! Too much to list; call to make a private showing appointment!",
+    "place_id" : 5
   },
   {
     "image_id": 11,
@@ -117,7 +139,9 @@
     "bed": 5,
     "bath": 5.1,
     "sqft": 6247,
-    "price": 1499000
+    "price": 1499000,
+    "description" : "Come home to this incredible Cuddy Valley property with unparalleled views of the mountains and valleys.  Located at an elevation of 5500 you will experience all 4 seasons in California.  With over 20 acres you will live among 100 year old Jeffrey and Pinon Pines.  This home was rebuilt in 2004 to take advantage of the views from every angle.  This 5 bedroom 5 1/2 bath home has a wine cellar, finished basement, great room and oversized formal dining room for entertaining.  Want a home office in one room, AV in another, TV and computer in every room, music and paging? No problem, rooms can become anything you want!  They are prewired with multiple runs for TV, AV and Ethernet.  Of course, there is a security and video surveillance system. UPS systems and back up generator ensures you have power 24/7 and a 400 AMP Main Panel! There is a workshop/storage building that measures 35x70  it holds 2 large RV's has natural gas and wood heat and 2 12 foot roll up doors.  A 20x40 metal storage building.  You have a fresh water well and plenty of water storage as well as a pasture with horse barn and corrals. 2600 sq. ft. flagstone patio with fire pit, apple orchard, private wide steep and long snow sliding hill and and multiple large decks overlooking National forest and valley!  Located 45 minutes from both Santa Clarita and Bakersfield",
+    "place_id" : 6
   },
   {
     "image_id": 12,
@@ -127,6 +151,7 @@
     "bed": 2,
     "bath": 2,
     "sqft": 2466,
+    "description" : "Built in the 80' as a Bird Hunting Lodge,  Skyotee Ranch only 90 Miles from Los Angeles, offers hundreds of  large Shade , and Peach trees,   The 22 Acre Ranch with all underground utilities (no overhead electrical wires) and fully enclosed 5 inch aluminum  pipe and steel fence.  Also featured is an  enclosed Four Stall Horse Barn with Tack and Feed Room, corrals, hot walker, and two pasture. Skyotee Ranch has it's own new computerize Water Well with UNLIMITED WATER  USE and incorporates a  fully computerize irrigation system. Enjoy a well stocked Catfish pond, Ideal for children and family.   RV Parking,  Horse back,  Motor-cross,  Dirt Bikes,  ATV,  Motorcycles,  Dirt Buggies and trail riding.   Additional motor-cross hill climbing pictures on YouTube, see  skyoteeranch.com 12 Camera Security Wireless System. Satcom,  Direct TV A  5000 sq. ft. Two story Wood and Automotive fully equipped work shop, and Tractor Storage sheds.   (FARM EQUIPMENT) Tractors and shop equipment may be included in sale.    Incredible opportunity for Solar Farm or Orchard Income on the 10 acre pasture.   The Ranch is Very well maintained and provides a steady weekend RENTAL INCOME  through AIRBaB, and VACATIONRENTALS.COM when not in  use by the owner.  Possible trade considered.  Broker, Agents, Welcome    Contact    Jules  818-370-3079     julesmarco@sbcglobal.net  ",
     "price": 1488000
   },
   {
@@ -137,6 +162,7 @@
     "bed": 3,
     "bath": 2,
     "sqft": 2686,
+    "description" : "14+ acre Landmark Kernville Ranch is located just minutes from the recreation capital of Kernville. The combination of an abundant water supply, gentle terrain and year-round green pasture, and a comfortable log cabin home with numerous outbuildings and barns, provide the potential for fully sustainable living. Fully fenced and cross-fenced, including nearly 11 acres of flood-irrigated pasture, the ranch has three sources of water: public, spring, and irrigation ditch. The residence has 3 bedrooms, 2 full baths, kitchen, living room, family room, and a laundry room. The recreation potential is endless: Lake Isabella and the Kern River for fishing, boating, whitewater rafting, tubing, and swimming. Hiking, camping, biking and skiing are all possible as well. For the equestrian, the ranch could support development of a riding arena and enhanced stables for either western or english riding disciplines. There is also a full-service horse boarding and riding facility just down the road.",
     "price": 995000
   },
   {
@@ -147,17 +173,8 @@
     "bed": 1,
     "bath": 1,
     "sqft": 1048,
+    "description" : "Farmer's Dream Come True! 20 acres of usable flat land through a massive iron gate, potential land for agriculture or whatever you may Dream. This is a Beautiful location with a 20 Acres!.This 1990 home is slight fixer, it feature 2 Bed/2 bathroom. The land include 2 pond they can be filler anytime with it's Own personal clear drinking water well, also come with water pump, water tank its 50,000 gallon,The well provide 1,200 gallon of water per minute to the home and through out the land. Tank diesel tank with generator, septic tank. Property has machines shop, 3 Generators for electricity, 6 heavy equipment machine shop  with compressors can also be purchase with the home. This is a Beautiful property,is fenced all around and many feature.",
     "price": 2000000
-  },
-  {
-    "image_id": 15,
-    "street": "8072 Cuddy Valley Road",
-    "citi": "Frazier Park, CA",
-    "n_citi": 122,
-    "bed": 5,
-    "bath": 5.1,
-    "sqft": 6247,
-    "price": 1499000
   },
   {
     "image_id": 16,
@@ -167,7 +184,9 @@
     "bed": 3,
     "bath": 3.1,
     "sqft": 4597,
-    "price": 1550000
+    "price": 1550000,
+    "description" : "Welcome to Whispering Pines, this one of a kind property is nestled on a 40 acres lot with over 4,500 of the living area. Home is completely renovated with too many upgrades to mention, it is truly a must see home. Upgrades start from ventilation system  throughout the house to kitchen with new appliances,  granite counter tops, engineering wood floors throughout the home, all bathrooms renovated with new imported floor tile, new cabinetry, sinks, hardware and so much more. Double Paine windows with aluminum trim on the outside and wood trim on the inside. Wood burning fireplace in the family room, two separate AC units, water well, septic tank and six horse  barn.  Bedrooms on each floor, main floor has two bedrooms, one with on-suite and a walk-in closet,  the other with on-suite and a sliding door closet. Downstairs you will find another bedroom and a billiards room with an attached full bathroom and separate direct access to the outside.  Third floor features an additional two bedrooms with two attached bathrooms and a walk-in closet as well as a sitting area full of natural light and amazing views. Park your cars and store your toys in three car attached garage with plenty of outside private gated spaces as well as RV access.",
+    "place_id" : 6
   },
   {
     "image_id": 17,
@@ -177,7 +196,9 @@
     "bed": 8,
     "bath": 3.1,
     "sqft": 4236,
-    "price": 1850000
+    "price": 1850000,
+    "description" : "Truly magnificent, ranch estate for sale for the first time! Welcome to the "Lee Ranch"! This is your opportunity to own 78 acres of nearly all usable land!  Situated in Frazier Park, enjoy 4 seasons of splendor! Three separate parcels included in sale! Be immersed in nature with 360 degree mountain views! Main house offers almost 2,700 sqft of living space and features 5 bedrooms and 2.5 baths. Luxuriously remodeled kitchen with island and bar! Massive great room with wood-burning fireplace, inviting for those cozy winter nights. Two main floor bedrooms with full bath. Radiant heating system, dual-paned winders, along with solar water heater offers high efficiency during the winter months. Beautifully manicured lawn and landscaping around main home.  Third structure "Bunk House" was converted into a studio featuring 252 sqft with kitchen and 3/4  bath. Huge 40X60 workshop along with many outbuildings that can be used for whatever you may need! Located off a maintained paved county road! Surrounded by the Los Padres National forest with hiking, biking, horseback riding, hunting, and more! Don't miss out on this truly once in a lifetime opportunity to own this magnificent ranch estate. Income producing potential such as, horse ranch, weddings, large event venues, Airbnb, Vrbo, Farming etc! The ultimate family retreat!",
+    "place_id" : 6
   },
   {
     "image_id": 18,
@@ -187,6 +208,7 @@
     "bed": 4,
     "bath": 1.1,
     "sqft": 1980,
+    "description" : "Outdoor recreational enthusiast's weekend warrior dream! 40 acre mountain property in the beautiful Tehachapi mountains. Private parcel in the higher elevations of Gamble Springs Canyon in Kern County.  Enjoy hiking, camping, ATV, seasonal hunting and snow! Property has a seasonal stream that runs through the property on normal winters. Panoramic views of the high desert below. An easy drive from Los Angeles and Ventura Counties.  Close to Tehachapi, Bakersfield, and Lake Isabella.  4x4 vehicle is recommended for access.",
     "price": 1995000
   },
   {
@@ -197,6 +219,7 @@
     "bed": 4,
     "bath": 2.1,
     "sqft": 1967,
+    "description" : "Seller will pay $6,000 of buyer's closing costs on all loans, VA, FHA, USDA, etc. Wow! Want a masterbedroom large enough to hold 3 kingsize beds? Great room with pellet stove off the kitchen. Dual paned windows throughout, even the french doors are dual.  Drive thru garage to rear yard! Seller will help with your closing costs,too! All 4 bedrooms have ceiling fan/lights. Only 1 block to the elementary school.",
     "price": 249950
   },
   {
@@ -207,6 +230,7 @@
     "bed": 4,
     "bath": 2,
     "sqft": 1573,
+    "description" : "NEW CONSTRUCTION IN ARVIN! Lets deal on this great 4 Bedroom & 2 Bath home w/ over 2000 square footage of living space! Ready to move into! Make an offer!",
     "price": 205000
   },
   {
@@ -217,6 +241,7 @@
     "bed": 5,
     "bath": 3,
     "sqft": 2065,
+    "description" : "Two separate houses for the price of one!!!!!!! These two houses sit in the north side of town, one of the most desirable areas. Front house is a 3 bedroom 2 bath, Back house is 2 bdrm 2 bath.Both houses have beautiful tile floors in the living room, kitchen and bathrooms, hardwood cabinets in the kitchen and antique cabinets in the bathrooms, granite counters with stove and microwave oven included. Both Properties are Rented Unit A 3+2 and is rented at $700.00 , Unit B is 2+2 Rented at $630.00 Section 8 You must come by to see these two homes!!!!",
     "price": 249000
   },
   {
@@ -227,6 +252,7 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1087,
+    "description" : ""
     "price": 195000
   },
   {
@@ -237,7 +263,9 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1400,
-    "price": 229000
+    "price": 229000,
+    "description" : "Come home to this peaceful single story 3 bedroom, 2 bath located on a large corner (2 lots) with mountain views on the sunny side of Frazier Park! Open living room features a beautiful brick fireplace with wood stove insert to keep you warm and cozy on those cold winter nights. The spacious kitchen offers plenty of counter space and large cabinets. Separate laundry area. Back patio area includes a built-in BBQ and climbing grape vines. The elevated wood deck is a tranquil spot to enjoy your morning coffee, and stargaze at night! Two car garage has single car entrance and lots of room for storage. Great location on paved road, and short walk to town! Assessor shows 2 bedroom - 3rd bedroom/office is not permitted; buyer to verify square footage.",
+    "place_id" : 6
   },
   {
     "image_id": 24,
@@ -247,6 +275,7 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1533,
+    "description" : "Newly renovated. Like new! Open floor plan creates the perfect entertainment environment. Custom butcher block graces the huge kitchen island and counter tops. Huge three car garage to hold all your off-road toys, cars, or workshop with plenty of space to spare. 3 bedroom 2 full baths. RV access. Quiet, safe, and peaceful.    If you ride, you need this off road haven.  (All the riding you could possibly want plus showers and AC!)  If you want to occasionally escape the rat race of the city you need this oasis.  If you want to experience an extremely cost effective healthy retirement you need this sanctuary.  It may be a little hot during the summer days (that's what the air conditioning is for), but the summer nights consistently bring 70 degrees, zero humidity, perfect weather complete with endless star filled skies and dreams...seriously.  If you have experienced it you know.  If you haven't experienced it you owe it to yourself and your family to do so.",
     "price": 229000
   },
   {
@@ -257,6 +286,7 @@
     "bed": 2,
     "bath": 1,
     "sqft": 966,
+    "description" : "Amazing opportunity to get in to NW Bakersfield for under $250,000 on an RS zoned, 10,406 s.f. lot. Property features 2 bedrooms, 2 car garage with large driveway for additional parking, room for RV parking and bonus 2 car garage/shop.",
     "price": 239900
   },
   {
@@ -267,7 +297,9 @@
     "bed": 3,
     "bath": 2.1,
     "sqft": 1760,
-    "price": 235000
+    "price": 235000,
+    "description" : "This is one amazing deal on a home if you've ever come across one. Located directly across the street from the local park. On a paved road with a paved driveway and brand new library nearby. If privacy and convenience is what your looking for then this is the home for you. This property is accessible from 3933 Encino Trail and the most convenient entrance with driveway and tandem garage, 3932 Park Drive, Frazier Park, CA 93225. Three spacious bedrooms and two bathrooms located on the first floor including a master bed and bathroom. The 2nd level upstairs features a spacious open kitchen and living room with a 1/2 bathroom. The most beautiful views off the highest deck are on this level. When annual park events are happening you have front row seat. You don't want to miss your chance with this one.",
+    "place_id" : 6
   },
   {
     "image_id": 27,
@@ -277,6 +309,7 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1478,
+    "description" : "Unique opportunity to purchase two houses in one. The main house is a 3 bedroom 1 Bath House, and the second unit is a good size complete studio with private entrance, newer bathroom and complete kitchen. The new owner may use it as income property or a "Mother in Law" quarters. Both units will be delivered vacant. Original hardwood floors throughout the front house. Newer dual pane windows, central heating/air. Large yard for entertaining with alley entrance. Easy access to 58 & 99 freeways. Hurry won't last!",
     "price": 239900
   },
   {
@@ -437,7 +470,8 @@
     "bed": 2,
     "bath": 2,
     "sqft": 1008,
-    "price": 216500
+    "price": 216500,
+    "place_id" : 6
   },
   {
     "image_id": 44,
@@ -467,7 +501,8 @@
     "bed": 3,
     "bath": 1.1,
     "sqft": 1440,
-    "price": 219000
+    "price": 219000,
+    "place_id" : 6
   },
   {
     "image_id": 47,
@@ -477,7 +512,8 @@
     "bed": 2,
     "bath": 1,
     "sqft": 896,
-    "price": 198500
+    "price": 198500,
+    "place_id" : 6
   },
   {
     "image_id": 48,
@@ -647,7 +683,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1290,
-    "price": 237500
+    "price": 237500,
+    "place_id" : 6
   },
   {
     "image_id": 65,
@@ -787,7 +824,8 @@
     "bed": 2,
     "bath": 2,
     "sqft": 1536,
-    "price": 245000
+    "price": 245000,
+    "place_id" : 6
   },
   {
     "image_id": 79,
@@ -817,7 +855,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1380,
-    "price": 249900
+    "price": 249900,
+    "place_id" : 6
   },
   {
     "image_id": 82,
@@ -967,7 +1006,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1198,
-    "price": 280000
+    "price": 280000,
+    "place_id" : 6
   },
   {
     "image_id": 97,
@@ -1137,7 +1177,8 @@
     "bed": 3,
     "bath": 3.1,
     "sqft": 1526,
-    "price": 275000
+    "price": 275000,
+    "place_id" : 6
   },
   {
     "image_id": 114,
@@ -1157,7 +1198,8 @@
     "bed": 3,
     "bath": 2.1,
     "sqft": 1558,
-    "price": 295000
+    "price": 295000,
+    "place_id" : 6
   },
   {
     "image_id": 116,
@@ -1217,7 +1259,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1665,
-    "price": 289000
+    "price": 289000,
+    "place_id" : 6
   },
   {
     "image_id": 122,
@@ -1247,7 +1290,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 2176,
-    "price": 260000
+    "price": 260000,
+    "place_id" : 6
   },
   {
     "image_id": 125,
@@ -1257,7 +1301,8 @@
     "bed": 3,
     "bath": 3,
     "sqft": 1376,
-    "price": 269900
+    "price": 269900,
+    "place_id" : 6
   },
   {
     "image_id": 126,
@@ -1347,7 +1392,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1836,
-    "price": 274900
+    "price": 274900,
+    "place_id" : 6
   },
   {
     "image_id": 135,
@@ -1377,7 +1423,8 @@
     "bed": 4,
     "bath": 2.1,
     "sqft": 1897,
-    "price": 285000
+    "price": 285000,
+    "place_id" : 6
   },
   {
     "image_id": 138,
@@ -1397,7 +1444,8 @@
     "bed": 2,
     "bath": 2,
     "sqft": 1536,
-    "price": 245000
+    "price": 245000,
+    "place_id" : 6
   },
   {
     "image_id": 140,
@@ -1437,7 +1485,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 1380,
-    "price": 249900
+    "price": 249900,
+    "place_id" : 6
   },
   {
     "image_id": 144,
@@ -1587,7 +1636,8 @@
     "bed": 4,
     "bath": 2,
     "sqft": 2216,
-    "price": 349000
+    "price": 349000,
+    "place_id" : 6
   },
   {
     "image_id": 159,
@@ -1787,7 +1837,8 @@
     "bed": 3,
     "bath": 2.1,
     "sqft": 1558,
-    "price": 295000
+    "price": 295000,
+    "place_id" : 6
   },
   {
     "image_id": 179,
@@ -1877,7 +1928,8 @@
     "bed": 4,
     "bath": 2.1,
     "sqft": 1856,
-    "price": 328000
+    "price": 328000,
+    "place_id" : 6
   },
   {
     "image_id": 188,
@@ -2097,7 +2149,8 @@
     "bed": 4,
     "bath": 2,
     "sqft": 2216,
-    "price": 349000
+    "price": 349000,
+    "place_id" : 6
   },
   {
     "image_id": 210,
@@ -2227,7 +2280,8 @@
     "bed": 4,
     "bath": 4,
     "sqft": 2900,
-    "price": 359000
+    "price": 359000,
+    "place_id" : 6
   },
   {
     "image_id": 223,
@@ -2257,7 +2311,8 @@
     "bed": 3,
     "bath": 3.1,
     "sqft": 2075,
-    "price": 399000
+    "price": 399000,
+    "place_id" : 6
   },
   {
     "image_id": 226,
@@ -2407,7 +2462,8 @@
     "bed": 3,
     "bath": 3,
     "sqft": 2389,
-    "price": 389000
+    "price": 389000,
+    "place_id" : 6
   },
   {
     "image_id": 241,
@@ -2417,7 +2473,8 @@
     "bed": 4,
     "bath": 3,
     "sqft": 2746,
-    "price": 379000
+    "price": 379000,
+    "place_id" : 6
   },
   {
     "image_id": 242,
@@ -2467,7 +2524,8 @@
     "bed": 3,
     "bath": 3,
     "sqft": 2503,
-    "price": 449000
+    "price": 449000,
+    "place_id" : 5
   },
   {
     "image_id": 247,
@@ -2517,7 +2575,8 @@
     "bed": 3,
     "bath": 2,
     "sqft": 2620,
-    "price": 439000
+    "price": 439000,
+    "place_id" : 6
   },
   {
     "image_id": 252,
@@ -2557,7 +2616,8 @@
     "bed": 3,
     "bath": 3.1,
     "sqft": 2075,
-    "price": 399000
+    "price": 399000,
+    "place_id" : 6
   },
   {
     "image_id": 256,
@@ -2707,7 +2767,8 @@
     "bed": 3,
     "bath": 3,
     "sqft": 2503,
-    "price": 449000
+    "price": 449000,
+    "place_id" : 5
   },
   {
     "image_id": 271,

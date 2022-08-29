@@ -49,7 +49,8 @@ class IndexProperties extends Command
                 'bath' => $property['bath'],
                 'price' => $property['price'],
                 'sqrft' => $property['sqft'],
-                'image' => 'https://ik.imagekit.io/yxftwkca9e/'  . $property['image_id'] . '.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1661373876924'
+                'image' => 'https://ik.imagekit.io/yxftwkca9e/'  . $property['image_id'] . '.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1661373876924',
+                'description' => $property['description']
             ];
             Elasticsearch::index($request);
             $counter++;
