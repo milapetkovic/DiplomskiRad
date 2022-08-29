@@ -32,13 +32,33 @@
                             About
                         </router-link>
                     </li>
+
+                    <li class="nav-item">
+                        <router-link
+                            class="nav-link"
+                            data-toggle="collapse"
+                            :to="{ name: 'properties-index' }"
+                        >
+                            Properties
+                        </router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link
+                            class="nav-link"
+                            data-toggle="collapse"
+                            :to="{ name: 'properties-create' }"
+                        >
+                            Add Property
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </nav>
 
-        <div class="container">
+        <b-container fluid="xxl">
             <router-view></router-view>
-        </div>
+        </b-container>
     </div>
 </template>
 
@@ -51,3 +71,9 @@ export default {
     },
 };
 </script>
+
+<style>
+    .container-xxl {
+        max-width: 100%;
+    }
+</style>
