@@ -22,7 +22,10 @@ class Elasticsearch
     public function __construct()
     {
         $this->clientBuilder = ClientBuilder::create();
-        $this->clientBuilder->setHosts(["127.0.0.1:9200"]);
+        $this->clientBuilder->setHosts([
+            config('app.elasticsearch_host')
+            . ':'
+            . config('app.elasticsearch_port')]);
         $this->client = $this->clientBuilder->build();
     }
 
@@ -52,32 +55,43 @@ class Elasticsearch
         try {
             return $this->client->search($parameters);
         } catch (ClientResponseException|ServerResponseException $e) {
+            Log::channel('elasticsearch_error')->info($e->getMessage());
+            return [];
         }
-        return [];
     }
 
     /**
      * Check if index exists
      *
      * @param $parameters
-     * @return bool
+     * @return \Elastic\Elasticsearch\Response\Elasticsearch|Promise|null
      */
-    public function exists($parameters)
+    public function exists($parameters): \Elastic\Elasticsearch\Response\Elasticsearch|Promise|null
     {
-        return $this->client
-            ->indices()
-            ->exists($parameters);
+        try {
+            return $this->client
+                ->indices()
+                ->exists($parameters);
+        } catch (ClientResponseException|MissingParameterException|ServerResponseException $e) {
+            Log::channel('elasticsearch_error')->info($e->getMessage());
+            return null;
+        }
     }
 
     /**
      * Index multiple documents
      *
      * @param $parameters
-     * @return array
+     * @return \Elastic\Elasticsearch\Response\Elasticsearch|Promise|null
      */
-    public function bulk($parameters)
+    public function bulk($parameters): \Elastic\Elasticsearch\Response\Elasticsearch|Promise|null
     {
-        return $this->client
-            ->bulk($parameters);
+        try {
+            return $this->client
+                ->bulk($parameters);
+        } catch (ClientResponseException|ServerResponseException $e) {
+            Log::channel('elasticsearch_error')->info($e->getMessage());
+            return null;
+        }
     }
 }

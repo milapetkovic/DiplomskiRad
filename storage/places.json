@@ -1,5 +1,38 @@
 [
     {
-        "id" : 1
+        "image_id": 0,
+        "street": "1317 Van Buren Avenue",
+        "citi": "Salton City, CA",
+        "n_citi": 317,
+        "bed": 3,
+        "bath": 2,
+        "sqft": 1560,
+        "price": 201900,
+        "description" : "Spectacular 3 Bedroom 2 Bath 1560sqft home with a swimming pool. This house has so many upgrades that I cannot list them all. The house has ceiling fans in every room, Alside Window Platinum 2 insulated window and slider doors throughout the home, Daltile Emerson Wood Porcelain floor throughout the house, tiled fireplace in the living room, solid granite counter tops, Provia 6 Paneled Embossed Mountain Berry Double Steel door will Full Jamb front doors with Provia Duraguard Security Screen Full View Double Door, tiled 2 person shower in the guest bathroom and a separate tile shower & bath in the master, large walk-in closet in the master bedroom, Whirlpool Black Stainless microwave and stove, also a Maytag Stainless Steel JetClean Plus Front Control Dishwasher. Then you have an 18 foot round above ground salt water pool 4 feet deep with a wood deck and glass wall. This pool has a Deep Cleaning Robotic Pool Cleaner system on it. The house has a covered patio in the back and Red River Rock landscaping in the front and back yard. You also have 2 sheds, 3 storage cabinets and 3 storage boxes in the back yard and an RV ACCESS GATE. MUST SEE!!!!",
+        "place_id" : 1
+    },
+    {
+        "image_id": 1,
+        "street": "124 C Street W",
+        "citi": "Brawley, CA",
+        "n_citi": 48,
+        "bed": 3,
+        "bath": 2,
+        "sqft": 713,
+        "price": 228500,
+        "description" : "This single-family home is located at 124 W C St, Brawley, CA. 124 W C St is in Brawley, CA and in ZIP code 92227. This property has 3 bedrooms, 2 bathrooms and approximately 713 sqft of floor space. This property has a lot size of 7,409 sqft and was built in 1950.",
+        "place_id" : 2
+    },
+    {
+        "image_id": 2,
+        "street": "2304 Clark Road",
+        "citi": "Imperial, CA",
+        "n_citi": 152,
+        "bed": 3,
+        "bath": 1,
+        "sqft": 800,
+        "price": 273950,
+        "description" : "This 800 square foot single family home has 3 bedrooms and 1.0 bathrooms. This home is located at 2304 Clark Rd, Imperial, CA 92251.",
+        "place_id" : 3
     }
 ]

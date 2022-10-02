@@ -1,8 +1,8 @@
 <template>
     <div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <router-link :to="{ name: 'home' }" class="navbar-brand"
-            >Laravel-Vue SPA</router-link
+            <router-link :to="{ name: 'home' }" class="navbar-brand mx-3"
+            >Moving Out</router-link
             >
             <button
                 class="navbar-toggler"

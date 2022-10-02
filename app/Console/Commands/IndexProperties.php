@@ -3,11 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Facades\Elasticsearch;
-use App\Facades\Search;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
-use Spatie\Geocoder\Geocoder;
+use maxh\Nominatim\Exceptions\NominatimException;
+use maxh\Nominatim\Nominatim;
 
 class IndexProperties extends Command
 {
@@ -29,53 +29,61 @@ class IndexProperties extends Command
      * Execute the console command.
      *
      * @return int
+     * @throws NominatimException|GuzzleException
      */
-    public function handle()
+    public function handle(): int
     {
-        $client = new Client();
-        $geocoder = new Geocoder($client);
-        $geocoder->setApiKey('AIzaSyBB4zjf7eY2CGYKtunkOlLEq0xgKpZ61pw');
-        $geocoder->setCountry(config('geocoder.country', 'US'));
         $counter = 0;
         $addedProperties = [];
-        $properties = json_decode(file_get_contents(storage_path() . "/properties.json"), true);
+        $request = [];
+        $properties = json_decode(file_get_contents(storage_path() . "/places.json"), true);
         foreach ($properties as $property) {
-            $image = 'https://ik.imagekit.io/yxftwkca9e/'  . $property['image_id'] . '.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1661373876924';
-            $file_headers = @get_headers($image);
-            if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
-                $image = '/storage/icons/house.svg';
-            }
-            $body = [
-                'id' => $property['image_id'],
-                'address' => $property['street'],
-                'city' => $property['citi'],
-                'location' => [
-                    "lat" => $geocoder->getCoordinatesForAddress($property['street'] . ' ' . $property['citi'])['lat'],
-                    "lon" => $geocoder->getCoordinatesForAddress($property['street'] . ' ' . $property['citi'])['lng']
-                ],
-                'bed' => $property['bed'],
-                'bath' => $property['bath'],
-                'price' => $property['price'],
-                'sqrft' => $property['sqft'],
-                'image' => $image,
-                'description' => $property['description']
-            ];
-            $request['body'][] = [
-                'index' => [
-                    '_index' => 'properties',
-                    '_id' => intval( '00000' . $property['image_id'])
-                ]
-            ];
-            $request['body'][] = $body;
+            if(!in_array($property['street'], $addedProperties)) {
+                $image = 'https://ik.imagekit.io/yxftwkca9e/'  . $property['image_id'] . '.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1661373876924';
+                $file_headers = @get_headers($image);
+                if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+                    $image = '/storage/icons/house.svg';
+                }
+                $url = "http://nominatim.openstreetmap.org/";
+                $nominatim = new Nominatim($url);
+                $search = $nominatim->newSearch();
+                $search->query('Street W, Brawley')->city('Salton City');
+                $result =  $nominatim->find($search);
+                $body = [
+                    'id' => $property['image_id'],
+                    'address' => $property['street'],
+                    'city' => $property['citi'],
+                    'location' => [
+                        "lat" => $result[0]['lat'],
+                        "lon" => $result[0]['lat']
+                    ],
+                    'bed' => $property['bed'],
+                    'bath' => $property['bath'],
+                    'price' => $property['price'],
+                    'sqrft' => $property['sqft'],
+                    'image' => $image,
+                    'description' => $property['description'] ?? ""
+                ];
+                $request['body'][] = [
+                    'index' => [
+                        '_index' => 'properties_secondary',
+                        '_id' => intval( '00000' . $property['image_id'])
+                    ]
+                ];
+                $request['body'][] = $body;
 
-            if ($counter != 0 && $counter % 500 == 0) {
-                $response = Elasticsearch::bulk($request);
-                $request = ['body' => []];
-                unset($response);
-                $this->info('Indexed ' . $counter . ' properties...');
+                if ($counter != 0 && $counter % 10 == 0) {
+                    $response = Elasticsearch::bulk($request);
+                    $request = ['body' => []];
+                    unset($response);
+                    $this->info('Indexed ' . $counter . ' properties...');
+                }
+                $counter++;
+                $addedProperties[] = $property['street'];
             }
-            $counter++;
         }
+        if(isset($request['body']) && count($request['body']))
+            Elasticsearch::bulk($request);
         $this->info('Number of properties: ' . count(array_unique(array_column($properties, 'street'))));
         return 0;
     }

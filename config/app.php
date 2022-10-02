@@ -154,6 +154,9 @@ return [
     |
     */
 
+    'elasticsearch_host' => env('ELASTICSEARCH_HOST', '127.0.0.1'),
+    'elasticsearch_port' => env('ELASTICSEARCH_PORT', '9200'),
+
     'providers' => [
 
         /*
@@ -194,8 +197,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Geocoder\Laravel\Providers\GeocoderService::class,
-        Spatie\Geocoder\GeocoderServiceProvider::class
+        //Geocoder\Laravel\Providers\GeocoderService::class,
+        //Spatie\Geocoder\GeocoderServiceProvider::class
 
     ],
 
@@ -212,7 +215,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Geocoder' => Spatie\Geocoder\Facades\Geocoder::class,
+       // 'Geocoder' => Spatie\Geocoder\Facades\Geocoder::class,
         'Elasticsearch' => \App\Facades\Elasticsearch::class
 
     ])->toArray(),

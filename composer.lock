@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16d748be63decc1d39ba532e5f007ee0",
+    "content-hash": "4dd1164b796ba5f4f382e2db82522076",
     "packages": [
         {
             "name": "brick/math",
@@ -2173,6 +2173,64 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "maxh/php-nominatim",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxhelias/php-nominatim.git",
+                "reference": "49a220320d1fec85b0091ea92a2bb699a3869b1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxhelias/php-nominatim/zipball/49a220320d1fec85b0091ea92a2bb699a3869b1a",
+                "reference": "49a220320d1fec85b0091ea92a2bb699a3869b1a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "@stable",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "dev-master",
+                "phpro/grumphp-shim": "^1.4",
+                "phpunit/phpunit": "^8.5|^9.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "maxh\\Nominatim\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Helias",
+                    "email": "maximehelias16@gmail.com",
+                    "homepage": "http://maximehelias.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Wrapper for Nominatim API",
+            "homepage": "https://github.com/maxhelias/php-nominatim",
+            "keywords": [
+                "geo",
+                "geolocation",
+                "nominatim",
+                "open street map",
+                "osm",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/maxhelias/php-nominatim/issues",
+                "source": "https://github.com/maxhelias/php-nominatim/tree/2.3.0"
+            },
+            "time": "2021-07-17T14:13:17+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -28,3 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/{any}', function () {
     return view('layouts.vue');
 })->where('any', '.*');
+
+Route::post('/properties/search','App\Http\Controllers\Api\PropertiesController@search')->name('properties.search.page');
