@@ -36,7 +36,7 @@ class IndexProperties extends Command
         $counter = 0;
         $addedProperties = [];
         $request = [];
-        $properties = json_decode(file_get_contents(storage_path() . "/places.json"), true);
+        $properties = json_decode(file_get_contents(storage_path() . "/properties.json"), true);
         foreach ($properties as $property) {
             if(!in_array($property['street'], $addedProperties)) {
                 $image = 'https://ik.imagekit.io/yxftwkca9e/'  . $property['image_id'] . '.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1661373876924';
@@ -47,7 +47,7 @@ class IndexProperties extends Command
                 $url = "http://nominatim.openstreetmap.org/";
                 $nominatim = new Nominatim($url);
                 $search = $nominatim->newSearch();
-                $search->query('Street W, Brawley')->city('Salton City');
+                $search->query($property['street'])->city( $property['citi']);
                 $result =  $nominatim->find($search);
                 $body = [
                     'id' => $property['image_id'],
@@ -66,7 +66,7 @@ class IndexProperties extends Command
                 ];
                 $request['body'][] = [
                     'index' => [
-                        '_index' => 'properties_secondary',
+                        '_index' => 'properties',
                         '_id' => intval( '00000' . $property['image_id'])
                     ]
                 ];
