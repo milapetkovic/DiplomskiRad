@@ -48,7 +48,6 @@ class PropertiesController extends Controller
                 $parameters = [
                     'index' => 'properties',
                     'body' => [
-                       // 'size' => 10,
                         'query' => [
                             "query_string" => [
                                 "query" => $request->searchQuery,
@@ -110,4 +109,60 @@ class PropertiesController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return string[]
+     */
+    public function drawPolygonSearch(Request $request): array
+    {
+        try {
+            if($request->searchQuery && strlen($request->searchQuery))
+                $parameters = [
+                    'index' => 'properties',
+                    'body' => [
+                        'query' => [
+                            "bool" => [
+                                "must" => [
+                                    "query_string" => [ "query" => $request->searchQuery, "fields" => ["description", "address", "city"]]
+                                ],
+                                "filter" => [
+                                    "geo_polygon" => [
+                                        "location" => [
+                                            "points" => $request->pointsArray ?? []
+                                        ]
+                                    ]
+                                ]
+                            ],
+                        ]
+                    ]
+                ];
+            else
+                $parameters = [
+                    'index' => 'properties',
+                    'body' => [
+                        'query' => [
+                            "bool" => [
+                                "filter" => [
+                                    "geo_polygon" => [
+                                        "location" => [
+                                            "points" => $request->pointsArray ?? []
+                                        ]
+                                    ]
+                                ]
+                            ],
+                        ]
+                    ]
+                ];
+            $results =  Elasticsearch::search($parameters);
+            return array_column($results['hits']['hits'], '_source');
+        } catch (Exception $exception) {
+            Log::channel('error.log')->info($exception->getMessage());
+            return ["We couldn't find any properties for you"];
+        }
+    }
+
+    public function drawDistanceSearch(Request $request)
+    {
+
+    }
 }

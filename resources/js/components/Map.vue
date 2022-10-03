@@ -51,6 +51,8 @@ export default {
         }
     },
     mounted() {
+        var ref = this;
+
         const raster = new TileLayer({
             source: new OSM(),
         });
@@ -108,7 +110,7 @@ export default {
         map.addLayer(vlayer);
 
         const modify = new Modify({source: source});
-        //map.addInteraction(modify);
+        map.addInteraction(modify);
 
         let draw, snap; // global so we can remove them later
         const typeSelect = document.getElementById('type');
@@ -119,7 +121,10 @@ export default {
                 type: typeSelect.value,
             });
             draw.on('drawend',function(e){
-                console.log(e.feature.getGeometry().getCoordinates()[0]);
+                let typeSearch = document.getElementById('type').value;
+                ref.drawSearch(typeSearch, e.feature.getGeometry().getCoordinates());
+               // this.$emit('eventname', this.locations)
+
             })
             map.addInteraction(draw);
             snap = new Snap({source: source});
@@ -136,7 +141,13 @@ export default {
 
     },
     methods: {
+        drawSearch (type, coordinates) {
+            console.log(type);
+            //this.drawSearch(typeSearch, e.feature.getGeometry().getCoordinates()[0]);
+            //Proj.toLonLat(e.feature.getGeometry().getCoordinates()[0]);
+            this.$emit('eventname', this.locations)
 
+        }
     }
 }
 </script>

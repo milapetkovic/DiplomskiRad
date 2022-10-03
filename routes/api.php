@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/properties','App\Http\Controllers\Api\PropertiesController@index');
 Route::post('/properties/autocomplete','App\Http\Controllers\Api\PropertiesController@autocomplete');
 Route::post('/properties/search','App\Http\Controllers\Api\PropertiesController@search');
+Route::post('/properties/draw-polygon-search', 'App\Http\Controllers\Api\PropertiesController@drawPolygonSearch');
+Route::post('/properties/draw-distance-search', 'App\Http\Controllers\Api\PropertiesController@drawDistanceSearch');
 

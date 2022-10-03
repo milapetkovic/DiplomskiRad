@@ -3,7 +3,7 @@
         <div class="row">
             <div class="row mt-3">
                 <b-input-group>
-                    <b-form-input placeholder="Find your new home now" :value="this.searchQuery"></b-form-input>
+                    <input :value="this.searchQuery" id="searchValue" class="form-control">
                     <b-input-group-append>
                         <b-button variant="secondary" type="primary" @click="this.searchProperties"><font-awesome-icon icon="fa-magnifying-glass" /></b-button>
                     </b-input-group-append>
@@ -14,7 +14,7 @@
         <div class="row mt-3" v-if="propertiesLoaded">
             <div class="col-lg-5">
                 <template>
-                    <Map :locations="properties"></Map>
+                    <Map :locations="properties" @eventname="updateparent"></Map>
                 </template>
             </div>
             <div class="col-lg-7">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-left: 200px; margin-right: 200px; margin-top: -150px"><img src="/storage/icons/loader.gif" alt="Loading..."></div>
+        <div v-else class="row" style="margin-left: 200px; margin-right: 200px; margin-top: -150px"><img src="/storage/icons/loader.gif" alt="Loading..."></div>
     </b-container>
 </template>
 <script>
@@ -82,7 +82,6 @@ export default {
     },
     created() {
         this.fetchProperties();
-
     },
     mounted() {
     },
@@ -128,6 +127,8 @@ export default {
                 .catch(error => { console.log(error); });
         },
         searchProperties: function () {
+            this.propertiesLoaded = false;
+            this.searchQuery = document.getElementById('searchValue').value;
             fetch("/api/properties/search", {
                 headers: {
                     'Accept': 'application/json',
@@ -135,14 +136,18 @@ export default {
                 },
                 method: "POST",
                 body: JSON.stringify({
-                    searchQuery: this.searchQuery
+                    searchQuery: document.getElementById('searchValue').value
                 })
             })
                 .then(response => response.json())
                 .then(data => {
                     this.properties = data;
+                    this.propertiesLoaded = true;
                 })
                 .catch(error => { console.log(error); });
+        },
+        updateparent(coordinates) {
+            console.log('testttt');
         }
     }
 }
