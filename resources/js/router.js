@@ -13,6 +13,7 @@ import '@trevoreyre/autocomplete-vue/dist/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import ByCounties from "./components/pages/Properties/ByCounties.vue";
 library.add(faMagnifyingGlass)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue)
@@ -44,6 +45,11 @@ const router = new VueRouter({
             name: 'properties-create',
             component: PropertiesCreate
         },
+        {
+            path: '/properties/by-counties',
+            name: 'by-counties',
+            component: ByCounties
+        }
     ]
 });
 

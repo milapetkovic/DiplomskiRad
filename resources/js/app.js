@@ -10,6 +10,9 @@ window.Vue = require('vue').default;
 
 import router from './router';
 import App from './components/layouts/App.vue';
+import PropertiesSearch from './components/pages/Properties/Search';
+Vue.component('properties-search', require('./components/pages/Properties/Search').default);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -33,4 +36,12 @@ const app = new Vue({
     router,
     el: '#app',
     render: h => h(App)
+});
+
+const search = new Vue({
+    router,
+    el: '#search',
+    components: [
+        PropertiesSearch
+    ]
 });

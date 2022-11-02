@@ -30,3 +30,4 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 Route::post('/properties/search','App\Http\Controllers\Api\PropertiesController@search')->name('properties.search.page');
+Route::post('/county/properties', 'App\Http\Controllers\Api\CountiesController@propertiesByCounty');

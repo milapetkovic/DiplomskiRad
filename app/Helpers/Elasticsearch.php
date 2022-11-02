@@ -94,4 +94,22 @@ class Elasticsearch
             return null;
         }
     }
+
+    /**
+     * Update Document
+     *
+     * @param $parameters
+     * @return \Elastic\Elasticsearch\Response\Elasticsearch|Promise|null
+     * @throws MissingParameterException
+     */
+    public function update($parameters): \Elastic\Elasticsearch\Response\Elasticsearch|Promise|null
+    {
+        try {
+            return $this->client
+                ->update($parameters);
+        } catch (ClientResponseException|ServerResponseException $e) {
+            Log::channel('elasticsearch_error')->info($e->getMessage());
+            return null;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 <template>
     <b-container fluid="xxl">
+        <!-----
         <div class="row mt-5">
             <form role="form" method="POST" action="/properties/search" @submit="alert('submitted')">
                 <input type="hidden" name="_token" :value="csrf">
@@ -17,6 +18,48 @@
                     {{ result }}
                 </li>
             </ul>
+        </div>
+        ----->
+        <div class="row mt-5">
+            <div  class="col-sm-4">
+                <b-card
+                    img-src="https://www.worldatlas.com/r/w1200/upload/5e/6d/b3/shutterstock-222278563.jpg"
+                    img-top
+                    tag="article"
+                    class="mb-2"
+                >
+                    <b-card-text>
+                    </b-card-text>
+                    <b-button href="#" variant="primary"><router-link :to="{ name: 'by-counties' }" class="navbar-brand mx-3">Search By Counties</router-link>
+                    </b-button>
+                </b-card>
+            </div>
+            <div  class="col-sm-4">
+                <b-card
+                    img-src="https://i.ytimg.com/vi/tfyFElO_pcA/maxresdefault.jpg"
+                    img-top
+                    tag="article"
+                    class="mb-2"
+                >
+                    <b-card-text>
+                    </b-card-text>
+                    <b-button href="#" variant="primary"><router-link :to="{ name: 'properties-index' }" class="navbar-brand mx-3">Search By Drawing</router-link>
+                    </b-button>
+                </b-card>
+            </div>
+            <div  class="col-sm-4">
+                <b-card
+                    img-src="https://cdn.dribbble.com/users/250541/screenshots/10859623/icons_01_4x.jpg"
+                    img-top
+                    tag="article"
+                    class="mb-2"
+                >
+                    <b-card-text>
+                    </b-card-text>
+                    <b-button href="#" variant="primary"><router-link :to="{ name: 'properties-index' }" class="navbar-brand mx-3">Search By Amenities</router-link>
+                    </b-button>
+                </b-card>
+            </div>
         </div>
     </b-container>
 </template>
@@ -77,5 +120,8 @@ export default {
 </script>
 <style scoped>
 input, input:focus, input:focus-visible, input:focus-within {
+}
+.card-img-top {
+    height: 400px;
 }
 </style>

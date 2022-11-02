@@ -1,6 +1,7 @@
 <template>
-    <div style="height: 100%">
-        <div id="map" class="map" style="width: 100%; height: 100%; border: 2px solid black; background-color: white"></div>
+    <div style="height: 1000px">
+        <div id="map" class="map" style="width: 100%; height: 1000px; border: 2px solid black; background-color: white"></div>
+        <!---
         <form>
             <label for="type">Geometry type &nbsp;</label>
             <select id="type">
@@ -9,7 +10,7 @@
                 <option value="Polygon">Polygon</option>
                 <option value="Circle">Circle</option>
             </select>
-        </form>
+        </form>-->
     </div>
 </template>
 
@@ -83,14 +84,15 @@ export default {
         });
         var vsource = new VectorSource();
         this.locations.forEach(function (el) {
+            console.log(el.location[0]);
             var marker = new ol.Feature({
                 type: 'icon',
-                geometry: new Geom.Point(Proj.fromLonLat([el.location.lon, el.location.lat]))
+                geometry: new Geom.Point(Proj.fromLonLat(el.location))
             });
             marker.setStyle(
                 new Style.Style({
                     text: new Style.Text({
-                        text: el.address,
+                        text: '-',
                         scale: 1.2,
                         textAlign: "end"
                     }),
@@ -115,7 +117,7 @@ export default {
         let draw, snap; // global so we can remove them later
         const typeSelect = document.getElementById('type');
 
-        function addInteractions() {
+        /*function addInteractions() {
             draw = new Draw({
                 source: source,
                 type: typeSelect.value,
@@ -137,7 +139,7 @@ export default {
             addInteractions();
         };
 
-        addInteractions();
+        addInteractions();*/
 
     },
     methods: {

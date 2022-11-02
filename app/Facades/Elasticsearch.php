@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static bulk($parameters)
  * @method static search($parameters)
  * @method static exists($parameters)
+ * @method static update($parameters)
+ *
  **/
 class Elasticsearch extends Facade {
 

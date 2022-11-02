@@ -2,8 +2,7 @@
     <div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <router-link :to="{ name: 'home' }" class="navbar-brand mx-3"
-            >Moving Out</router-link
-            >
+            >Moving Out</router-link>
             <button
                 class="navbar-toggler"
                 data-toggle="collapse"
@@ -11,6 +10,7 @@
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!----
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -54,6 +54,7 @@
                     </li>
                 </ul>
             </div>
+            ---->
         </nav>
 
         <b-container fluid="xxl">
