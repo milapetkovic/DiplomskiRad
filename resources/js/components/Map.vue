@@ -1,16 +1,15 @@
 <template>
     <div style="height: 1000px">
         <div id="map" class="map" style="width: 100%; height: 1000px; border: 2px solid black; background-color: white"></div>
-        <!---
-        <form>
+        <form v-if="draw">
             <label for="type">Geometry type &nbsp;</label>
             <select id="type">
-                <option value="Point">Point</option>
-                <option value="LineString">LineString</option>
+            <!---    <option value="Point">Point</option>--->
+             <!---   <option value="LineString">LineString</option>-->
                 <option value="Polygon">Polygon</option>
-                <option value="Circle">Circle</option>
+              <!----  <option value="Circle">Circle</option> --->
             </select>
-        </form>-->
+        </form>
     </div>
 </template>
 
@@ -30,6 +29,7 @@ import * as Style from 'ol/style';
 export default {
     props: {
         locations: Array,
+        draw: true
     },
     name: "Map",
     data(){
@@ -77,14 +77,13 @@ export default {
             layers: [raster, vector],
             target: 'map',
             view: new View({
-                center: [-13000000, 3600000],
-                zoom: 7,
+                center: Proj.fromLonLat(this.locations[0].location),
+                zoom: 10,
                 extent,
             }),
         });
         var vsource = new VectorSource();
         this.locations.forEach(function (el) {
-            console.log(el.location[0]);
             var marker = new ol.Feature({
                 type: 'icon',
                 geometry: new Geom.Point(Proj.fromLonLat(el.location))
@@ -117,38 +116,42 @@ export default {
         let draw, snap; // global so we can remove them later
         const typeSelect = document.getElementById('type');
 
-        /*function addInteractions() {
-            draw = new Draw({
-                source: source,
-                type: typeSelect.value,
-            });
-            draw.on('drawend',function(e){
-                let typeSearch = document.getElementById('type').value;
-                ref.drawSearch(typeSearch, e.feature.getGeometry().getCoordinates());
-               // this.$emit('eventname', this.locations)
+        if(this.draw) {
+            function addInteractions() {
 
-            })
-            map.addInteraction(draw);
-            snap = new Snap({source: source});
-            map.addInteraction(snap);
+                draw = new Draw({
+                    source: source,
+                    type: typeSelect.value,
+                });
+                draw.on('drawend',function(e){
+                    let typeSearch = document.getElementById('type').value;
+                    let coordinates = []; let i = 0;
+                    for (const element of e.feature.getGeometry().getCoordinates()[0]) {
+                        coordinates[i] = Proj.toLonLat(element); i++;
+                    }
+
+                    ref.drawSearch('typeSearch', coordinates);
+
+                })
+                map.addInteraction(draw);
+                snap = new Snap({source: source});
+                map.addInteraction(snap);
+            }
+
+            typeSelect.onchange = function () {
+                map.removeInteraction(draw);
+                map.removeInteraction(snap);
+                addInteractions();
+            };
+
+            addInteractions();
         }
 
-        typeSelect.onchange = function () {
-            map.removeInteraction(draw);
-            map.removeInteraction(snap);
-            addInteractions();
-        };
-
-        addInteractions();*/
 
     },
     methods: {
         drawSearch (type, coordinates) {
-            console.log(type);
-            //this.drawSearch(typeSearch, e.feature.getGeometry().getCoordinates()[0]);
-            //Proj.toLonLat(e.feature.getGeometry().getCoordinates()[0]);
-            this.$emit('eventname', this.locations)
-
+            this.$parent.updateParent(coordinates);
         }
     }
 }

@@ -23,7 +23,7 @@ class PropertiesController extends Controller
                 'index' => 'properties',
                 'body' => [
                     'from' => ($request->currentPage - 1) * $request->size,
-                    'size' => $request->size ?? 12,
+                    'size' => $request->size ?? 1000,
                     'sort' => [ 'id' => ['order' => 'asc' ] ]
                 ]
             ];
@@ -34,6 +34,84 @@ class PropertiesController extends Controller
             return $exception->getMessage();
         }
     }
+
+    /**
+     * @param Request $request
+     */
+    public function propertiesAmenities(Request $request)
+    {
+        try {
+            $parameters = [
+                'index' => 'properties',
+                'body' => [
+                    'query' => [
+                        "bool" => [
+                            "must" => [
+                                [
+                                    "query_string" => [
+                                        "query" => $request->details,
+                                        "fields" => ["description", "address", "city"]
+                                    ]
+                                ],
+                                [
+                                    "range" => [
+                                        "bath" => [
+                                            "gte" => $request->noBaths ?? 1,
+                                        ]
+                                    ]
+                                ],
+                                [
+                                    "range" => [
+                                        "bed" => [
+                                            "gte" => $request->noBeds ?? 1,
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ],
+                    "size" => 100
+                ]
+            ];
+            $results =  Elasticsearch::search($parameters);
+            $properties = array_column($results['hits']['hits'], '_source');
+            if (isset($request->schoolProximity) && $request->schoolProximity != 'no') {
+               foreach ($properties as $key => $property) {
+                   $parameters = [
+                       'index' => 'public_schools',
+                       'body' => [
+                           'query' => [
+                               "bool" => [
+                                   "must" => [
+                                       "match_all" => new \stdClass()
+                                   ],
+                                   "filter" => [
+                                       "geo_distance" => [
+                                           "distance" => $request->schoolProximity,
+                                           "geometry" => [
+                                               "lat" => $property['location'][1],
+                                               "lon" => $property['location'][0]
+                                           ]
+                                       ]
+                                   ]
+                               ]
+                           ]
+                       ]
+                   ];
+                   $schools =  Elasticsearch::search($parameters);
+                   if(!$schools['hits']['total']['value']) {
+                       unset($properties[$key]);
+                   }
+               }
+            }
+            $heading = 'Properties with at least ' . $request->noBeds . ' bedrooms and ' . $request->noBaths . ' bathrooms';
+            return view('search', compact('request', 'properties', 'heading'));
+        } catch (Exception $exception) {
+            Log::channel('error.log')->info($exception->getMessage());
+            return $exception->getMessage();
+        }
+    }
+
 
     /**
      * Return All Properties
@@ -173,7 +251,8 @@ class PropertiesController extends Controller
                                     ]
                                 ]
                             ],
-                        ]
+                        ],
+                        "size" => 1000
                     ]
                 ];
             else
@@ -190,7 +269,8 @@ class PropertiesController extends Controller
                                     ]
                                 ]
                             ],
-                        ]
+                        ],
+                        "size" => 1000
                     ]
                 ];
             $results =  Elasticsearch::search($parameters);
@@ -201,6 +281,10 @@ class PropertiesController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function schoolDistance(Request $request) {
         try {
             $parameters = [
@@ -208,29 +292,78 @@ class PropertiesController extends Controller
                 'body' => [
                     'query' => [
                         "bool" => [
-                            'must' => [
-                                "query_string" => [
-                                    "query" =>  "*",
-                                    "fields" => ["address"]
-                                ]
+                            "must" => [
+                                "match_all" => new \stdClass()
                             ],
                             "filter" => [
                                 "geo_distance" => [
-                                    "location" => [
+                                    "distance" => "1km",
+                                    "geometry" => [
                                         "lat" => 40.735832,
                                         "lon" => -111.9298
                                     ]
                                 ]
                             ]
-                        ],
+                        ]
                     ]
                 ]
             ];
             $results =  Elasticsearch::search($parameters);
-            return array_column($results['hits']['hits'], '_source');
+            return $results;
         } catch (Exception $exception) {
             Log::channel('error.log')->info($exception->getMessage());
-            return [];
+            return [$exception->getMessage()];
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed|string[]
+     */
+    public function get(Request $request): mixed
+    {
+        try {
+           $parameters = [
+                'index' => 'properties',
+                'body' => [
+                    'query' => [
+                        "match" => [
+                            "id" => $request->id
+                        ]
+                    ]
+                ]
+            ];
+            $results =  Elasticsearch::search($parameters);
+            $response = [];
+            $response['property'] = array_column($results['hits']['hits'], '_source')[0];
+            $parameters = [
+                'index' => 'public_schools',
+                'body' => [
+                    'query' => [
+                        "bool" => [
+                            "must" => [
+                                "match_all" => new \stdClass()
+                            ],
+                            "filter" => [
+                                "geo_distance" => [
+                                    "distance" => "1.5km",
+                                    "geometry" => [
+                                        "lat" => $response['property']['location'][1],
+                                        "lon" => $response['property']['location'][0]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+            $results =  Elasticsearch::search($parameters);
+            $response['schools'] = array_column($results['hits']['hits'], '_source');
+
+            return $response;
+        } catch (Exception $exception) {
+            Log::channel('error.log')->info($exception->getMessage());
+            return [$exception->getMessage()];
         }
     }
 

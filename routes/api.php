@@ -26,3 +26,6 @@ Route::post('/properties/draw-polygon-search', 'App\Http\Controllers\Api\Propert
 Route::post('/properties/draw-distance-search', 'App\Http\Controllers\Api\PropertiesController@drawDistanceSearch');
 Route::post('/counties/by-name', 'App\Http\Controllers\Api\CountiesController@searchByName');
 Route::post('/properties/school-distance', 'App\Http\Controllers\Api\PropertiesController@schoolDistance');
+Route::post('/properties/get', 'App\Http\Controllers\Api\PropertiesController@get');
+//Route::post('/properties/amenities', 'App\Http\Controllers\Api\PropertiesController@propertiesAmenities');
+

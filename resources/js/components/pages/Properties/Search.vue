@@ -19,7 +19,7 @@
                 <h1>SHOW AS A GRID</h1>
             </button>
         </div>
-        <div  class="col-sm-3" v-for="property in JSON.parse(this.properties)" v-if="propertyGrid">
+        <div  class="col-sm-3" v-for="property in JSON.parse(this.properties)" v-if="propertyGrid && searchResults">
             <b-card
                 :title="property['address']"
                 :sub-title="property['city']"
@@ -34,12 +34,16 @@
                     Baths: {{ property['bath'] }}
                     Bed: {{ property['bed'] }}
                 </b-card-text>
-                <b-button href="#" variant="primary">View More</b-button>
+                <b-button href="#" variant="primary">
+                    <router-link :to="{ path: '/properties/detail/'+ property['id'] }" v-on:click="details($event)">
+                        View More
+                    </router-link>
+                </b-button>
             </b-card>
         </div>
-        <div v-if="!propertyGrid">
+        <div v-if="!propertyGrid && searchResults">
             <div class="col-lg-12" style="height: 100%">
-                <Map :locations="JSON.parse(this.properties)"></Map>
+                <Map :locations="JSON.parse(this.properties)" :draw="false"></Map>
             </div>
         </div>
     </div>
@@ -54,7 +58,8 @@ export default {
     },
     data: () => ({
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-        propertyGrid: true
+        propertyGrid: true,
+        searchResults: true
     }),
     components: {
         Map
@@ -65,11 +70,13 @@ export default {
         },
         onMap: function(event) {
             this.propertyGrid = false;
+        },
+        details: function (event) {
+            this.searchResults = false;
         }
     },
     name: 'PropertiesSearch',
     mounted() {
-        console.log(JSON.parse(this.properties))
     }
 }
 </script>
@@ -84,4 +91,7 @@ button {
     margin: 0;
     padding: 0;
 }
+ a {
+     color: white;
+ }
 </style>

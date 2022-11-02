@@ -14,6 +14,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import ByCounties from "./components/pages/Properties/ByCounties.vue";
+import ByAmenities from "./components/pages/Properties/ByAmenities.vue";
+
+import Detail from "./components/pages/Properties/Detail.vue";
+
 library.add(faMagnifyingGlass)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue)
@@ -49,6 +53,16 @@ const router = new VueRouter({
             path: '/properties/by-counties',
             name: 'by-counties',
             component: ByCounties
+        },
+        {
+            path: '/properties/by-amenities',
+            name: 'by-amenities',
+            component: ByAmenities
+        },
+        {
+            path: '/properties/detail/:id',
+            name: 'properties-detail',
+            component: Detail
         }
     ]
 });

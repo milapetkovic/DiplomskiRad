@@ -56,7 +56,7 @@
                 >
                     <b-card-text>
                     </b-card-text>
-                    <b-button href="#" variant="primary"><router-link :to="{ name: 'properties-index' }" class="navbar-brand mx-3">Search By Amenities</router-link>
+                    <b-button href="#" variant="primary"><router-link :to="{ name: 'by-amenities' }" class="navbar-brand mx-3">Search By Amenities</router-link>
                     </b-button>
                 </b-card>
             </div>

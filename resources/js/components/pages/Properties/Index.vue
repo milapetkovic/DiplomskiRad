@@ -14,7 +14,7 @@
         <div class="row mt-3" v-if="propertiesLoaded">
             <div class="col-lg-5">
                 <template>
-                    <Map :locations="properties" @eventname="updateparent"></Map>
+                    <Map :locations="properties" :draw="true"></Map>
                 </template>
             </div>
             <div class="col-lg-7">
@@ -34,11 +34,12 @@
                                 Baths: {{ property['bath'] }}
                                 Bed: {{ property['bed'] }}
                             </b-card-text>
-                            <b-button href="#" variant="primary">Go somewhere</b-button>
+                            <!---<b-button href="#" variant="primary">Go somewhere</b-button>---->
                         </b-card>
                     </div>
 
                 </div>
+                <!----
                 <div class="row">
                     <b-pagination
                         @input="handlePageClick"
@@ -51,6 +52,7 @@
                         last-text="Last"
                     ></b-pagination>
                 </div>
+                ---->
             </div>
         </div>
         <div v-else class="row" style="margin-left: 200px; margin-right: 200px; margin-top: -150px"><img src="/storage/icons/loader.gif" alt="Loading..."></div>
@@ -66,7 +68,7 @@ export default {
             currentPage: 1,
             rows: 3869,
             perPage: 3,
-            propertiesPerPage: 12,
+            propertiesPerPage: 100,
             filter: 'none',
             zoom: 2,
             center: [0, 0],
@@ -146,8 +148,26 @@ export default {
                 })
                 .catch(error => { console.log(error); });
         },
-        updateparent(coordinates) {
-            console.log('testttt');
+        updateParent: function (coordinates) {
+            this.propertiesLoaded = false;
+            this.searchQuery = document.getElementById('searchValue').value;
+            fetch("/api/properties/draw-polygon-search", {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify({
+                    pointsArray: coordinates,
+                    searchQuery: document.getElementById('searchValue').value
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    this.properties = data;
+                    this.propertiesLoaded = true;
+                })
+                .catch(error => { console.log(error); });
         }
     }
 }

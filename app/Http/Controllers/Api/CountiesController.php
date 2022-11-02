@@ -71,7 +71,7 @@ class CountiesController extends Controller
                             ]
                         ]
                     ],
-                    "size" => "10000"
+                    "size" => "10"
                 ]
             ];
             $properties =  Elasticsearch::search($parameters);
