@@ -184,6 +184,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
         \App\Providers\ElasticsearchServiceProvider::class,
         /*
          * Package Service Providers...
@@ -216,7 +217,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
        // 'Geocoder' => Spatie\Geocoder\Facades\Geocoder::class,
-        'Elasticsearch' => \App\Facades\Elasticsearch::class
+        'Elasticsearch' => \App\Facades\Elasticsearch::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
 
     ])->toArray(),
 

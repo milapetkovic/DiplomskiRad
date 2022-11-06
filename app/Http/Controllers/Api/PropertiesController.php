@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Facades\Elasticsearch;
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
 
 class PropertiesController extends Controller
 {
@@ -37,8 +41,9 @@ class PropertiesController extends Controller
 
     /**
      * @param Request $request
+     * @return Application|Factory|View|string
      */
-    public function propertiesAmenities(Request $request)
+    public function propertiesAmenities(Request $request): View|Factory|string|Application
     {
         try {
             $parameters = [
@@ -263,9 +268,7 @@ class PropertiesController extends Controller
                             "bool" => [
                                 "filter" => [
                                     "geo_polygon" => [
-                                        "location" => [
-                                            "points" => $request->pointsArray ?? []
-                                        ]
+                                        "location" => [ "points" => $request->pointsArray ?? [] ]
                                     ]
                                 ]
                             ],
@@ -370,5 +373,108 @@ class PropertiesController extends Controller
     public function drawDistanceSearch(Request $request)
     {
 
+    }
+
+    /**
+     * @param Request $request
+     * @return View|Factory|array|Application
+     */
+    public function searchLanding(Request $request): View|Factory|array|Application
+    {
+        try {
+            $properties = $this->search($request);
+            $heading = 'Search results for... ' . $request->searchQuery;
+            $parameters = [
+                'index' => 'counties_secondary',
+                'body' => [
+                    'query' => [
+                        "query_string" => [
+                            "query" => $request->searchQuery ?? "*",
+                            "fields" => ["CountyName", 'AdminRegion']
+                        ]
+                    ],
+                    "size" => 8,
+                    "_source" => ['CountyName', 'AdminRegion']
+                ]
+            ];
+            $counties =  Elasticsearch::search($parameters);
+            $counties = array_column($counties['hits']['hits'], '_id');
+            foreach ($counties as $county) {
+                $parameters = [
+                    'index' => 'properties',
+                    'body' => [
+                        'query' => [
+                            'bool' => [
+                                'must' => [
+                                    "query_string" => [
+                                        "query" =>  "*",
+                                        "fields" => ["address"]
+                                    ]
+                                ],
+                                'filter' => [
+                                    'geo_shape' => [
+                                        'location' => [
+                                            'relation' => 'WITHIN',
+                                            'indexed_shape' => [
+                                                'index' => 'counties_secondary',
+                                                'id' => $county,
+                                                'path' => 'geometry'
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ],
+                        "size" => "10"
+                    ]
+                ];
+                $propertiesCounty =  Elasticsearch::search($parameters);
+                $propertiesCounty = array_column($propertiesCounty['hits']['hits'], '_source');
+                $properties = array_merge($properties, $propertiesCounty);
+            }
+            return view('search', compact('request', 'properties', 'heading'));
+        } catch (Exception $exception) {
+            Log::channel('error.log')->info($exception->getMessage());
+            return [$exception->getMessage()];
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return array|mixed
+     */
+    public function closeProperties(Request $request): mixed
+    {
+        try {
+            $ipAddress = request()->ip() == '127.0.0.1' ? trim(shell_exec("dig +short myip.opendns.com @resolver1.opendns.com")) : request()->getIp();
+            $geo_ip = geoip()->getLocation($ipAddress);
+            $parameters = [
+                'index' => 'properties',
+                'body' => [
+                    "size" => 4,
+                    "sort" => [
+                        [
+                            "_geo_distance" => [
+                                "location" => [
+                                    "lat" => $geo_ip->lat,
+                                    "lon" => $geo_ip->lon
+                                ],
+                                "order" => "asc",
+                                "unit" => "km",
+                                "mode" => "min",
+                                "distance_type" => "arc",
+                                "ignore_unmapped" => "true"
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+            $properties =  Elasticsearch::search($parameters);
+
+            return $properties['hits']['hits'];
+        } catch (Exception $exception) {
+            Log::channel('error.log')->info($exception->getMessage());
+           return [$exception->getMessage()];
+        }
     }
 }

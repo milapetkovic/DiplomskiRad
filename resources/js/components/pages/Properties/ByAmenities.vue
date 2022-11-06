@@ -6,9 +6,11 @@
                 tag="article"
                 class="mb-2"
             >
+                <button class="btn btn-secondary"><router-link :to="{ name: 'home' }" >Back</router-link></button>
                 <h1 class="text-center" >Find your perfect home by amenities</h1>
                 <form role="form" method="POST" action="/properties/amenities">
                     <input type="hidden" name="_token" :value="csrf">
+                    <input style="display: none;" name="type" value="search-amenities">
                     <div class="form-group row">
                         <label for="inputEmail1" class="col-sm-2 col-form-label" style="color: white"><b>Property Details</b></label>
                         <div class="col-sm-10">

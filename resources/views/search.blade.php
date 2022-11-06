@@ -17,7 +17,7 @@
 <div id="app">
 </div>
 <div id="search">
-    <properties-search properties="{{ json_encode($properties) }}" heading="{{ $heading }}"></properties-search>
+    <properties-search properties="{{ json_encode($properties) }}" heading="{{ $heading }}" type="{{ $request->type }}" request="{{ $request }}"></properties-search>
 </div>
 
 

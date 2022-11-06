@@ -32,4 +32,5 @@ Route::get('/{any}', function () {
 Route::post('/properties/search','App\Http\Controllers\Api\PropertiesController@search')->name('properties.search.page');
 Route::post('/county/properties', 'App\Http\Controllers\Api\CountiesController@propertiesByCounty');
 Route::post('/properties/amenities', 'App\Http\Controllers\Api\PropertiesController@propertiesAmenities');
+Route::post('/properties/search-landing','App\Http\Controllers\Api\PropertiesController@searchLanding');
 

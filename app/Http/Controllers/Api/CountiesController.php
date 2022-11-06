@@ -80,7 +80,9 @@ class CountiesController extends Controller
             return view('search', compact('request', 'properties', 'heading'));
         } catch (Exception $exception) {
             Log::channel('error.log')->info($exception->getMessage());
-            return $exception->getMessage();
+            $properties = [];
+            $heading = "Error";
+            return view('search', compact('request', 'properties', 'heading'));
         }
     }
 

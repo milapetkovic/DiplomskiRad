@@ -1,5 +1,5 @@
 <template>
-    <div class="row mt-3" v-if="propertiesLoaded">
+    <div class="row mt-3" v-if="propertiesLoaded" id="propertyDetails">
         <div class="col-lg-5">
             <Map :locations="locations" :draw="false"></Map>
         </div>
@@ -46,8 +46,13 @@ export default {
     },
     created() {
         var x = document.getElementById("search");
-        x.style.display = "none";
+        if(x) x.style.display = "none";
+
         this.fetchProperty();
+    },
+    mounted() {
+        var y = document.getElementById("propertyDetails");
+        y.style.display = "block";
     },
     methods: {
         fetchProperty: function () {
@@ -67,8 +72,13 @@ export default {
                     this.schools = JSON.parse(JSON.stringify(data.schools));
                     this.locations[0] = this.property;
                     this.propertiesLoaded = true;
+                    console.log(data);
                 })
                 .catch(error => {  });
+        },
+        back: function () {
+            var x = document.getElementById("search");
+            x.style.display = "block";
         }
     }
 

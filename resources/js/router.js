@@ -11,7 +11,13 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Autocomplete from '@trevoreyre/autocomplete-vue'
 import '@trevoreyre/autocomplete-vue/dist/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import {faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimney } from '@fortawesome/free-solid-svg-icons'
+import { faBath } from '@fortawesome/free-solid-svg-icons'
+import { faBed } from '@fortawesome/free-solid-svg-icons'
+import { faSearchLocation } from  '@fortawesome/free-solid-svg-icons'
+import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faMapLocation } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import ByCounties from "./components/pages/Properties/ByCounties.vue";
 import ByAmenities from "./components/pages/Properties/ByAmenities.vue";
@@ -19,6 +25,13 @@ import ByAmenities from "./components/pages/Properties/ByAmenities.vue";
 import Detail from "./components/pages/Properties/Detail.vue";
 
 library.add(faMagnifyingGlass)
+library.add(faHouseChimney)
+library.add(faBath)
+library.add(faBed)
+library.add(faSearchLocation)
+library.add(faCircleArrowLeft)
+library.add(faMapLocation)
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)

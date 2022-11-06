@@ -22,6 +22,8 @@ Route::post('/properties','App\Http\Controllers\Api\PropertiesController@index')
 Route::post('/properties-geojson','App\Http\Controllers\Api\PropertiesController@indexGeoJson');
 Route::post('/properties/autocomplete','App\Http\Controllers\Api\PropertiesController@autocomplete');
 Route::post('/properties/search','App\Http\Controllers\Api\PropertiesController@search');
+Route::post('/properties/close','App\Http\Controllers\Api\PropertiesController@closeProperties');
+
 Route::post('/properties/draw-polygon-search', 'App\Http\Controllers\Api\PropertiesController@drawPolygonSearch');
 Route::post('/properties/draw-distance-search', 'App\Http\Controllers\Api\PropertiesController@drawDistanceSearch');
 Route::post('/counties/by-name', 'App\Http\Controllers\Api\CountiesController@searchByName');

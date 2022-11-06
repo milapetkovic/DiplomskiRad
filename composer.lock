@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4dd1164b796ba5f4f382e2db82522076",
+    "content-hash": "4560e1ed6a91d91c5b744aa9b6fd13ac",
     "packages": [
         {
             "name": "brick/math",
@@ -600,6 +600,64 @@
                 "search"
             ],
             "time": "2022-07-08T19:59:27+00:00"
+        },
+        {
+            "name": "fideloper/proxy",
+            "version": "4.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fideloper/TrustedProxy.git",
+                "reference": "a751f2bc86dd8e6cfef12dc0cbdada82f5a18750"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/a751f2bc86dd8e6cfef12dc0cbdada82f5a18750",
+                "reference": "a751f2bc86dd8e6cfef12dc0cbdada82f5a18750",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/http": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^8.5.8|^9.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fideloper\\Proxy\\TrustedProxyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fideloper\\Proxy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Fidao",
+                    "email": "fideloper@gmail.com"
+                }
+            ],
+            "description": "Set trusted proxies for Laravel",
+            "keywords": [
+                "load balancing",
+                "proxy",
+                "trusted proxy"
+            ],
+            "support": {
+                "issues": "https://github.com/fideloper/TrustedProxy/issues",
+                "source": "https://github.com/fideloper/TrustedProxy/tree/4.4.2"
+            },
+            "time": "2022-02-09T13:33:34+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -3917,76 +3975,6 @@
             "time": "2022-08-05T17:58:37+00:00"
         },
         {
-            "name": "spatie/geocoder",
-            "version": "3.14.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/geocoder.git",
-                "reference": "66ef3c0e9e9bd5db385891a49f946afc5ec46b5d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/geocoder/zipball/66ef3c0e9e9bd5db385891a49f946afc5ec46b5d",
-                "reference": "66ef3c0e9e9bd5db385891a49f946afc5ec46b5d",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.5|^7.0",
-                "illuminate/support": "^6.0|^7.0|^8.67|^9.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.5.21|^9.0|^9.4.4"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\Geocoder\\GeocoderServiceProvider"
-                    ],
-                    "aliases": {
-                        "Geocoder": "Spatie\\Geocoder\\Facades\\Geocoder"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\Geocoder\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be"
-                }
-            ],
-            "description": "Geocoding addresses to coordinates",
-            "homepage": "https://github.com/spatie/geocoder",
-            "keywords": [
-                "coordinate",
-                "geocode",
-                "laravel",
-                "location",
-                "map"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/geocoder/issues",
-                "source": "https://github.com/spatie/geocoder/tree/3.14.1"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
-            "time": "2022-06-29T06:29:45+00:00"
-        },
-        {
             "name": "symfony/console",
             "version": "v6.1.3",
             "source": {
@@ -6377,6 +6365,86 @@
                 "source": "https://github.com/geocoder-php/GeocoderLaravel/tree/4.5.1"
             },
             "time": "2022-02-10T12:48:16+00:00"
+        },
+        {
+            "name": "torann/geoip",
+            "version": "3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Torann/laravel-geoip.git",
+                "reference": "3d730ae7470b86ae828b4128b1757a96156fd941"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Torann/laravel-geoip/zipball/3d730ae7470b86ae828b4128b1757a96156fd941",
+                "reference": "3d730ae7470b86ae828b4128b1757a96156fd941",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "^8.0|^9.0",
+                "illuminate/console": "^8.0|^9.0",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "geoip2/geoip2": "~2.1",
+                "mockery/mockery": "^1.3",
+                "phpstan/phpstan": "^0.12.14",
+                "phpunit/phpunit": "^8.0",
+                "squizlabs/php_codesniffer": "^3.5",
+                "vlucas/phpdotenv": "^5.0"
+            },
+            "suggest": {
+                "geoip2/geoip2": "Required to use the MaxMind database or web service with GeoIP (~2.1).",
+                "monolog/monolog": "Allows for storing location not found errors to the log"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Torann\\GeoIP\\GeoIPServiceProvider"
+                    ],
+                    "aliases": {
+                        "GeoIP": "Torann\\GeoIP\\Facades\\GeoIP"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Torann\\GeoIP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Stainback",
+                    "email": "torann@gmail.com"
+                }
+            ],
+            "description": "Support for multiple GeoIP services.",
+            "keywords": [
+                "IP API",
+                "geoip",
+                "geolocation",
+                "infoDB",
+                "laravel",
+                "location",
+                "maxmind"
+            ],
+            "support": {
+                "issues": "https://github.com/Torann/laravel-geoip/issues",
+                "source": "https://github.com/Torann/laravel-geoip/tree/3.0.4"
+            },
+            "time": "2022-02-09T14:48:24+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

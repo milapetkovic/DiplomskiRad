@@ -6,12 +6,14 @@
                 tag="article"
                 class="mb-2"
             >
+                <button class="btn btn-secondary"><router-link :to="{ name: 'home' }" >Back</router-link></button>
                 <h1 class="text-center" >Find your perfect home by county</h1>
                 <form role="form" method="POST" action="/county/properties" @submit="alert('submitted')">
                     <input type="hidden" name="_token" :value="csrf">
                     <b-input-group>
                         <b-form-input placeholder="e.g. 'Los Angeles', 'Santa Barbara', 'Kern, Inland'" @input="autocomplete" @focus="autocomplete" name="selectedValue" autocomplete="off" :value="this.selectedValue"></b-form-input>
                         <input name="selectedId" :value="this.selectedId" style="display: none">
+                        <input name="type" value="search-counties" style="display: none">
                         <button id="searchButton" type="submit" class="btn btn-primary" disabled>Search</button>
                     </b-input-group>
                     <div id="myInputautocomplete-list" class="autocomplete-items">
@@ -36,6 +38,10 @@ name: "ByCounties",
         selectedValue: '',
         selectedId: ''
     }),
+    created() {
+        var x = document.getElementById("search");
+        if(x) x.style.display = "none";
+    },
     methods: {
         autocomplete: function (input) {
             document.getElementById('searchButton').setAttribute('disabled', 'true');
@@ -84,7 +90,11 @@ name: "ByCounties",
     height: 85vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/storage/icons/houses-background.jpg");
 }
+a {
+    color: white !important;
+    text-decoration: none;
 
+}
 h1 {
     font-size: 90px;
     color: white;
