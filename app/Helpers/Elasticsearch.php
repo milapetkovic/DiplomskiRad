@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Elastic\Elasticsearch\Client;
 use Elastic\Elasticsearch\ClientBuilder;
 use Elastic\Elasticsearch\Exception\AuthenticationException;
 use Elastic\Elasticsearch\Exception\ClientResponseException;
@@ -12,8 +13,8 @@ use Illuminate\Support\Facades\Log;
 
 class Elasticsearch
 {
-    private $clientBuilder;
-    private $client;
+    private ClientBuilder $clientBuilder;
+    private Client $client;
 
     /**
      *
