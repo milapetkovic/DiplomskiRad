@@ -6,11 +6,14 @@
                 <form role="form" method="POST" action="/properties/search-landing" @submit="alert('submitted')" class="search-form">
                     <input type="hidden" name="_token" :value="csrf">
                     <b-input-group>
-                        <b-form-input placeholder="e.g. 'Frazier Park', 'CA', 'House with a pool'" @input="autocomplete" @focus="autocomplete" name="searchQuery" autocomplete="off"></b-form-input>
+                        <b-form-input placeholder="e.g. 'Frazier Park', 'CA', 'House with a pool'" v-on:blur="hideBox" @input="autocomplete" @focus="autocomplete" name="searchQuery" autocomplete="off"></b-form-input>
                         <input name="type" style="display: none" value="search-landing">
                         <button id="searchButton" type="submit" class="btn btn-light"><font-awesome-icon icon="fa-magnifying-glass" /></button>
                     </b-input-group>
                     <div id="myInputautocomplete-list" class="autocomplete-items">
+                        <div v-for="(result) in autocompleteResults">
+                            {{ result }}
+                        </div>
                     </div>
                 </form>
             </div>
@@ -70,7 +73,7 @@
                         </h5>
                     </div>
                 </div>
-                <div class="row"style="border-top: 1px solid lightgray; padding-top: 20px;">
+                <div class="row" style="border-top: 1px solid lightgray; padding-top: 20px;">
                     <div  class="col-sm-4">
                         <b-card
                             img-src="https://www.worldatlas.com/r/w1200/upload/5e/6d/b3/shutterstock-222278563.jpg"
@@ -123,7 +126,8 @@ export default {
         autocompleteResults: [],
         autocompleteFetched: false,
         closeProperties: [],
-        fetched: false
+        fetched: false,
+        searchInput: ''
     }),
     created() {
         var x = document.getElementById("search");
@@ -155,8 +159,15 @@ export default {
             })
         },
         autocomplete: function (input) {
-            if (!(typeof input === 'string' || input instanceof String))
-                input = '';
+            var x = document.getElementById("myInputautocomplete-list");
+            x.style.display = "block";
+            if (!(typeof input === 'string' || input instanceof String)) {
+
+                input = this.searchInput ? this.searchInput : '*';
+            } else {
+                this.searchInput = input;
+            }
+
             fetch("/api/properties/autocomplete", {
                 headers: {
                     'Accept': 'application/json',
@@ -171,6 +182,7 @@ export default {
                 .then((data) => {
                     this.autocompleteResults = JSON.parse(JSON.stringify(data));
                     this.autocompleteFetched = true;
+                    console.log(this.autocompleteResults);
                 })
         },
         closePropertiesFetch: function () {
@@ -189,6 +201,10 @@ export default {
                     this.fetched = true;
                 })
                 .catch(error => { console.log(error); });
+        },
+        hideBox: function () {
+            var x = document.getElementById("myInputautocomplete-list");
+            x.style.display = "none";
         }
     }
 }
@@ -197,7 +213,7 @@ export default {
 input, input:focus, input:focus-visible, input:focus-within {
 }
 .card-img-top {
-    height: 400px;
+    height: 300px;
 }
 .search-box {
     border: 1px solid gray;
@@ -223,5 +239,33 @@ input, input:focus, input:focus-visible, input:focus-within {
 .search-form {
     width: 60%;
     margin-left: 20%;
+}
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+    text-align: left;
+
+}
+.autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+}
+
+form {
+    position: relative;
 }
 </style>

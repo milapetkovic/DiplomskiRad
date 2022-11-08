@@ -11,6 +11,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+const COUNTIES_INDEX = 'counties_secondary';
+const PROPERTIES_INDEX = 'properties';
+const SCHOOLS_INDEX = 'public_schools';
+const AUTOCOMPLETE_SIZE = 5;
+const SEARCH_SIZE = 100;
 
 class PropertiesController extends Controller
 {
@@ -24,7 +29,7 @@ class PropertiesController extends Controller
     {
         try {
             $parameters = [
-                'index' => 'properties',
+                'index' => PROPERTIES_INDEX,
                 'body' => [
                     'from' => ($request->currentPage - 1) * $request->size,
                     'size' => $request->size ?? 1000,
@@ -183,7 +188,7 @@ class PropertiesController extends Controller
                 $parameters = [
                     'index' => 'properties',
                     'body' => [
-                        'size' => 10
+                        'size' => SEARCH_SIZE
                     ]
                 ];
             $properties =  Elasticsearch::search($parameters);
@@ -203,29 +208,80 @@ class PropertiesController extends Controller
     public function autocomplete(Request $request): array
     {
         try {
-            if($request->searchQuery && strlen($request->searchQuery))
+            if($request->searchQuery)
                 $parameters = [
                     'index' => 'properties',
                     'body' => [
-                        'size' => 10,
                         'query' => [
                             "query_string" => [
                                 "query" => $request->searchQuery,
                                 "fields" => ["description", "address", "city"]
                             ]
-                        ]
+                        ],
+                        'size' => AUTOCOMPLETE_SIZE
                     ]
                 ];
             else
                 $parameters = [
                     'index' => 'properties',
                     'body' => [
-                        'size' => 10
+                        'size' => AUTOCOMPLETE_SIZE
                     ]
                 ];
-            $results =  Elasticsearch::search($parameters);
-            $resultsData = array_column($results['hits']['hits'], '_source');
-            return array_column($resultsData, 'address');
+            $properties =  Elasticsearch::search($parameters);
+            $properties = array_column($properties['hits']['hits'], '_source');
+             if(!$properties || count($properties) < AUTOCOMPLETE_SIZE) {
+                $parameters = [
+                    'index' => 'counties_secondary',
+                    'body' => [
+                        'query' => [
+                            "query_string" => [
+                                "query" => $request->searchQuery ?? "*",
+                                "fields" => ["CountyName", 'AdminRegion']
+                            ]
+                        ],
+                        "size" => AUTOCOMPLETE_SIZE,
+                        "_source" => ['CountyName', 'AdminRegion']
+                    ]
+                ];
+                $counties =  Elasticsearch::search($parameters);
+                $counties = array_column($counties['hits']['hits'], '_id');
+                foreach ($counties as $county) {
+                    $size = max((AUTOCOMPLETE_SIZE - count($properties)), 0);
+                    $parameters = [
+                        'index' => 'properties',
+                        'body' => [
+                            'query' => [
+                                'bool' => [
+                                    'must' => [
+                                        "query_string" => [
+                                            "query" =>  "*",
+                                            "fields" => ["address"]
+                                        ]
+                                    ],
+                                    'filter' => [
+                                        'geo_shape' => [
+                                            'location' => [
+                                                'relation' => 'WITHIN',
+                                                'indexed_shape' => [
+                                                    'index' => 'counties_secondary',
+                                                    'id' => $county,
+                                                    'path' => 'geometry'
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            "size" => $size
+                        ]
+                    ];
+                    $propertiesCounty =  Elasticsearch::search($parameters);
+                    $propertiesCounty = array_column($propertiesCounty['hits']['hits'], '_source');
+                    $properties = array_merge($properties, $propertiesCounty);
+                }
+            }
+            return array_column($properties, 'address');
         } catch (Exception $exception) {
             Log::channel('error.log')->info($exception->getMessage());
             return ["We couldn't find any properties for you"];
@@ -368,11 +424,6 @@ class PropertiesController extends Controller
             Log::channel('error.log')->info($exception->getMessage());
             return [$exception->getMessage()];
         }
-    }
-
-    public function drawDistanceSearch(Request $request)
-    {
-
     }
 
     /**
